@@ -30,7 +30,10 @@ const removeWithDependents = (id, list, courses) => {
 
 function HomePage(){
     const {data: courses, isPending, error} = useFetch(`${BASE_URL}/courses`)
-    const [completed, setCompleted] = useState([])
+    const [completed, setCompleted] = useState(() => {
+        const saved = localStorage.getItem('completed')
+        return saved ? JSON.parse(saved) : []
+    })
     const [filter, setFilter] = useState('all')
     if (isPending) return <p>Loading...</p>
     if (error) return <p>Error: {error}</p>
@@ -49,6 +52,8 @@ function HomePage(){
             setCompleted([...completed, id])
         }
     }
+    const saveProgress = () => localStorage.setItem('completed', JSON.stringify(completed));
+
     return (
         <>
             <ProgressSummary courses={coursesWithStatus} />
@@ -57,6 +62,7 @@ function HomePage(){
                 <option value="completed">Completed Only</option>
                 <option value="remaining">Remaining</option>
             </select>
+            <button className="btn btn-success mb-3" onClick={saveProgress}>Save</button>
             <CourseList courses={visibleCourses} allCourses={coursesWithStatus} onToggle={toggleCourse} />
         </>
     )

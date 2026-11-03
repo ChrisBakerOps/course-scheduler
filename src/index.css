@@ -1,0 +1,48 @@
+.credits {
+	color: darkgray;
+	font-size: small;
+}
+
+.course-cards-div {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.course-card {
+	flex: 1 1 30%;
+}
+
+.locked-card {
+	opacity: 50%;
+}
+
+.available-card {
+	border: 2px solid dodgerblue;
+}
+
+.completed-card {
+	border: 2px solid darkgreen;
+	background-color: #ccfbcc !important;
+}
+
+.completed-card .card-header {
+	background-color: lightgreen !important;
+}
+
+#progress-bar, #progress-fill {
+	margin-top: 10px;
+	border-radius: 10px;
+}
+
+#progress-bar {
+	background-color: lightgray;
+	min-height: 19px;
+}
+
+#progress-fill {
+	background-color: green;
+	text-align: center;
+	color: white;
+	font-size: small;
+}

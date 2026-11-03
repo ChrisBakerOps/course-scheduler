@@ -4,7 +4,7 @@ function CourseList ({courses, allCourses, onToggle}){
     const getNumber = (id) => allCourses.find((course) => course.id === id).number
 
     return (
-        <div>
+        <div className="course-cards-div">
             {courses.map(course => (
                 <CourseCard key={course.id} course={course} prereqNumbers={course.prerequisites.map(getNumber)} onToggle={onToggle}/>
             ))}

@@ -1,0 +1,94 @@
+@baseUrl = http://localhost:3000/api
+
+### 1. GET all courses (200)
+GET {{baseUrl}}/courses
+
+### 2. GET one course (200)
+GET {{baseUrl}}/courses/2
+
+### 3. GET a course that does not exist (404)
+GET {{baseUrl}}/courses/999
+
+### 4. POST a new course (201)
+POST {{baseUrl}}/courses
+Content-Type: application/json
+
+{
+  "number": "CSC4600",
+  "title": "Cloud Computing",
+  "credits": 3,
+  "description": "Test course",
+  "prerequisites": [5, 9]
+}
+
+### 5. POST with title missing (400)
+POST {{baseUrl}}/courses
+Content-Type: application/json
+
+{
+  "number": "CSC4700",
+  "credits": 3,
+  "prerequisites": []
+}
+
+### 6. PUT update course 7 (200)
+PUT {{baseUrl}}/courses/7
+Content-Type: application/json
+
+{
+  "number": "CSC3700",
+  "title": "Advanced Web Application Development",
+  "credits": 3,
+  "description": "React, Node/Express, MySQL, JWT authentication.",
+  "prerequisites": [3, 5]
+}
+
+### 7. PUT a course that does not exist (404)
+PUT {{baseUrl}}/courses/999
+Content-Type: application/json
+
+{
+  "number": "CSC9999",
+  "title": "Nothing",
+  "credits": 3,
+  "prerequisites": []
+}
+
+### 8. PUT restore course 7 to its original prerequisite (200)
+PUT {{baseUrl}}/courses/7
+Content-Type: application/json
+
+{
+  "number": "CSC3700",
+  "title": "Advanced Web Application Development",
+  "credits": 3,
+  "description": "React, Node/Express, MySQL, JWT authentication. Full-stack web development.",
+  "prerequisites": [3]
+}
+
+### 9. DELETE the test course (200). Use the id from request 4's response.
+DELETE {{baseUrl}}/courses/11
+
+### 10. DELETE a course that does not exist (404)
+DELETE {{baseUrl}}/courses/999
+
+### 11. GET completions (200)
+GET {{baseUrl}}/completions
+
+### 12. PUT valid completions (200)
+PUT {{baseUrl}}/completions
+Content-Type: application/json
+
+[1, 3, 2]
+
+### 13. PUT completions that break a prerequisite (400)
+PUT {{baseUrl}}/completions
+Content-Type: application/json
+
+[10]
+
+### 14. PUT restore the original completions (200)
+PUT {{baseUrl}}/completions
+Content-Type: application/json
+
+[1, 3]

@@ -74,6 +74,10 @@ function HomePage(){
             setMessage({type: 'success', text: 'Progress saved.'})
         } catch (err) {
             setMessage({type: 'danger', text: 'Could not reach the server.'})
+        } finally {
+            setTimeout(() => {
+                setMessage(null)
+            }, 5 * 1000)
         }
     }
 

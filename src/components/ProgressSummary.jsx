@@ -12,8 +12,8 @@ function ProgressSummary({courses}){
                <span>Available: {availableCount}</span>
                <span>Locked: {lockedCount}</span>
            </div>
-           <div id="progress-bar" style={{width: "100%"}}>
-               {progressFillWidth > 0 && <div id="progress-fill" style={{width: `${progressFillWidth}%`}}>{progressFillWidth.toFixed()}%</div>}
+           <div className="progress" style={{width: "100%"}}>
+               {progressFillWidth > 0 && <div className="progress-bar" role="progressbar" style={{width: `${progressFillWidth}%`}} aria-valuenow={progressFillWidth} aria-valuemin="0" aria-valuemax="100">{`${progressFillWidth}%`}</div>}
            </div>
        </div>
     )

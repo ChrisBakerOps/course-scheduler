@@ -29,20 +29,3 @@
 .completed-card .card-header {
 	background-color: lightgreen !important;
 }
-
-#progress-bar, #progress-fill {
-	margin-top: 10px;
-	border-radius: 10px;
-}
-
-#progress-bar {
-	background-color: lightgray;
-	min-height: 19px;
-}
-
-#progress-fill {
-	background-color: green;
-	text-align: center;
-	color: white;
-	font-size: small;
-}
